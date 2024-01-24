@@ -62,4 +62,19 @@ return {
       vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     end,
   },
+  {
+    "nvimdev/lspsaga.nvim",
+    config = function()
+      require("lspsaga").setup({})
+      vim.keymap.set("n", "<C-F>", ":Lspsaga finder<CR>")
+      vim.keymap.set({'n','t'}, '<A-t>', '<cmd>Lspsaga term_toggle<CR>')
+      vim.keymap.set({ "n", "i"}, "<A-a>", "<cmd>Lspsaga code_action<CR>")
+      vim.keymap.set({"n", "i"}, "<A-h>", "<cmd>Lspsaga hover_doc<CR>")
+      vim.keymap.set({"n", "i"}, "<A-d>", "<cmd>Lspsaga peek_definition<CR>")
+    end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvm-tree/nvim-web-devicons',
+    },
+  }
 }
